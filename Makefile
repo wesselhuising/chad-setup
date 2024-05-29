@@ -7,10 +7,7 @@ pull:
 
 install-tmux:
 	git clone https://github.com/tmux/tmux.git ~/tmp/tmux-installation
-	cd ~/tmp/tmux-installation
-	sh autogen.sh
-	./configure
-	make && sudo make install
+	cd ~/tmp/tmux-installation && sh autogen.sh && ./configure && make && sudo make install
 	rm -rf ~/tmp/tmux-installation
 	ln -sf "$PWD/tmux/.tmux.conf" "$HOME"/.tmux.conf"
 
@@ -19,7 +16,11 @@ install-nvim:
 	brew install neovim
 	ln -sf "$PWD/nvim/" "$HOME"/.config/nvim
 
-install:
+install-osx:
 	install-tmux
 	install-nvim
 
+install-linux:
+	apt-get install automake libtool
+	install-tmux
+	install-nvim
