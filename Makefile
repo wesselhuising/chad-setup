@@ -6,21 +6,24 @@ pull:
 	cp -r ~/.config/nvim/ nvim/
 
 install-tmux:
-	git clone https://github.com/tmux/tmux.git ~/tmp/tmux-installation
-	cd ~/tmp/tmux-installation && sh autogen.sh && ./configure && make && sudo make install
-	rm -rf ~/tmp/tmux-installation
-	ln -sf "$PWD/tmux/.tmux.conf" "$HOME"/.tmux.conf"
+	cp -r tmux/.tmux.conf ~/.tmux.conf
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 install-nvim:
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	brew install neovim
-	ln -sf "$PWD/nvim/" "$HOME"/.config/nvim
+	cp -r nvim/ ~/.config/nvim/
 
 install-osx:
 	install-tmux
 	install-nvim
 
 install-linux:
-	apt-get install automake libtool
-	install-tmux
-	install-nvim
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	. "$HOME/.cargo/env"
+	apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+	sudo apt-get install tmux
+	make install-tmux
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+	sudo rm -rf /opt/nvim
+	sudo tar -C /opt -xzf nvim-linux64.tar.gz
+	echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+	make install-nvim
