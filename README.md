@@ -1,3 +1,5 @@
 # chad-setup
 
-You only have to run `make install`.
+## Linux
+
+You only have to run `make install-linux`.
