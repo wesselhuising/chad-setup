@@ -1,5 +1,4 @@
-.PHONY: pull
-
+.PHONY: pull, install-tmux, install-nvim, install-osx, install-linux
 
 pull:
 	cp ~/.tmux.conf tmux/.tmux.conf
@@ -13,6 +12,7 @@ install-nvim:
 	cp -r nvim/ ~/.config/nvim/
 
 install-osx:
+	brew install tmux neovim
 	install-tmux
 	install-nvim
 
