@@ -18,7 +18,8 @@ install-osx:
 
 install-linux:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-	. "$HOME/.cargo/env"
+	. "$HOME/.cargo/env" 
+	cargo install alacritty
 	apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 	sudo apt-get install tmux
 	make install-tmux
