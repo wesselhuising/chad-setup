@@ -4,12 +4,15 @@ pull:
 	cp ~/.tmux.conf tmux/.tmux.conf
 	cp -r ~/.config/nvim/ nvim/
 
+test:
+	echo $(CURDIR)
+
 install-tmux:
-	cp -r tmux/.tmux.conf ~/.tmux.conf
+	ln -sf $(CURDIR)/tmux/.tmux.conf ~/.tmux.conf
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 install-nvim:
-	cp -r nvim/ ~/.config/nvim/
+	ln -sf $(CURDIR)/nvim ~/.config/nvim
 
 install-osx:
 	brew install tmux neovim
@@ -27,4 +30,5 @@ install-linux:
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
 	echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+	echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bash_profile
 	make install-nvim
