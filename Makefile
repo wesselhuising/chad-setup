@@ -41,7 +41,7 @@ install-osx:
 	install-nvim
 
 install-linux:
-	sudo apt install libfontconfig1-dev libfontconfig
+	sudo apt install libfontconfig1-dev libfontconfig ripgrep
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	. $(HOME)/.cargo/env 
 	cargo install alacritty
@@ -53,6 +53,7 @@ install-linux:
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
 	echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bashrc
 	echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bash_profile
+	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
 	make install-terraform-linux
