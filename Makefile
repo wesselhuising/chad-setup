@@ -41,6 +41,9 @@ install-osx:
 	install-tmux
 	install-nvim
 
+install-ohmybash:
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+
 install-linux:
 	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -56,3 +59,4 @@ install-linux:
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
+	make install-ohmybash
