@@ -14,6 +14,7 @@ install-tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 install-nvim:
+	rm -rf ~/.config/nvim
 	ln -sf $(CURDIR)/nvim ~/.config/nvim
 
 install-terraform-linux:
@@ -41,10 +42,9 @@ install-osx:
 	install-nvim
 
 install-linux:
-	sudo apt install libfontconfig1-dev libfontconfig ripgrep
+	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-	. $(HOME)/.cargo/env 
-	cargo install alacritty
+	. $(HOME)/.cargo/env && cargo install alacritty
 	sudo apt install cmake pkg-config libfreetype6-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 	sudo apt-get install tmux
 	make install-tmux
@@ -56,4 +56,3 @@ install-linux:
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
-	make install-terraform-linux
