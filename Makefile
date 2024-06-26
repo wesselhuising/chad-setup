@@ -31,7 +31,7 @@ install-ohmybash:
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
 install-linux:
-	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find xsel
+	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find xsel fzf
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	. $(HOME)/.cargo/env && cargo install alacritty
 	sudo apt install cmake pkg-config libfreetype6-dev libxcb-xfixes0-dev libxkbcommon-dev python3
