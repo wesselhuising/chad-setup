@@ -17,7 +17,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
-    { import = "lazyvim.plugins.extras.lang.python" },
     -- import/override with your plugins
     { import = "plugins" },
   },
@@ -49,9 +48,10 @@ require("lazy").setup({
   },
 })
 
-require("lint").linters_by_ft = {
-  python = { "pylint" },
-}
+-- require("lint").linters_by_ft = {
+--   python = { "pylint" },
+-- }
+
 require("mason").setup({
   ui = {
     icons = {
@@ -64,8 +64,29 @@ require("mason").setup({
 
 -- https://github.com/williamboman/mason-lspconfig.nvim
 require("mason-lspconfig").setup({
-  ensure_installed = { "jedi_language_server" },
+  ensure_installed = { "pylint", "pylsp" },
 })
 
+-- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+require("lspconfig").pylsp.setup({
+  settings = {
+    pylsp = {
+      plugins = {
+        black = {
+          enabled = true,
+        },
+        isort = {
+          enabled = true,
+        },
+        pylint = {
+          enabled = true,
+        },
+        pyflakes = {
+          enables = false,
+        },
+      },
+    },
+  },
+})
 -- https://github.com/neovim/nvim-lspconfig
-require("lspconfig").jedi_language_server.setup({})
+-- require("lspconfig").jedi_language_server.setup({})
