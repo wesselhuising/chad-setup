@@ -52,3 +52,20 @@ require("lazy").setup({
 require("lint").linters_by_ft = {
   python = { "pylint" },
 }
+require("mason").setup({
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
+})
+
+-- https://github.com/williamboman/mason-lspconfig.nvim
+require("mason-lspconfig").setup({
+  ensure_installed = { "jedi_language_server" },
+})
+
+-- https://github.com/neovim/nvim-lspconfig
+require("lspconfig").jedi_language_server.setup({})
