@@ -64,7 +64,7 @@ require("mason").setup({
 
 -- https://github.com/williamboman/mason-lspconfig.nvim
 require("mason-lspconfig").setup({
-  ensure_installed = { "pylint", "pylsp" },
+  ensure_installed = { "ruff", "pylsp" },
 })
 
 -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
@@ -78,11 +78,22 @@ require("lspconfig").pylsp.setup({
         isort = {
           enabled = true,
         },
+        -- pylint is only works from a binary but will throw errors for imports
         pylint = {
+          enabled = false,
+          executable = "pylint",
+        },
+        ruff = {
           enabled = true,
         },
         pyflakes = {
-          enables = false,
+          enabled = false,
+        },
+        pycodestyle = {
+          enabled = false,
+        },
+        jedi_completion = {
+          fuzzy = true,
         },
       },
     },
