@@ -1,4 +1,4 @@
-.PHONY: pull, install-tmux, install-nvim, install-osx, install-linux
+.PHONY: pull, install-tmux, install-nvim, install-osx, install-linux, install-fzf
 
 LAZYGIT_VERSION=$(shell curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 
@@ -28,7 +28,10 @@ install-osx:
 	install-nvim
 
 install-ohmybash:
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+	bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
+	mkdir ohmybash
+	echo "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" > "ohmybash/install.sh"
+	bash -c ohmybash/install.sh
 
 install-linux:
 	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find xsel fzf
@@ -46,3 +49,9 @@ install-linux:
 	make install-lazygit-linux
 	make install-nvim
 	make install-ohmybash
+	make install-fzf
+
+install-fzf:
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+
