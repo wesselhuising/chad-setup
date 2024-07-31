@@ -1,4 +1,4 @@
-.PHONY: pull, install-tmux, install-nvim, install-osx, install-linux, install-fzf
+.PHONY: pull, install-tmux, install-nvim, install-osx, install-linux
 
 LAZYGIT_VERSION=$(shell curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 
@@ -6,11 +6,9 @@ pull:
 	cp ~/.tmux.conf tmux/.tmux.conf
 	cp -r ~/.config/nvim/ nvim/
 
-test:
-	echo $(CURDIR)
-
 install-tmux:
 	ln -sf $(CURDIR)/tmux/.tmux.conf ~/.tmux.conf
+	sudo rm -rf ~/.tmux/plugins/tpm
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 install-nvim:
@@ -28,11 +26,12 @@ install-osx:
 	install-nvim
 
 install-linux:
-	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find xsel fzf
+	sudo apt update
+	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find xsel
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	. $(HOME)/.cargo/env && cargo install alacritty
 	sudo apt install cmake pkg-config libfreetype6-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-	sudo apt-get install tmux
+	sudo apt install tmux
 	make install-tmux
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 	sudo rm -rf /opt/nvim
@@ -42,9 +41,3 @@ install-linux:
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
-	make install-fzf
-
-install-fzf:
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install
-
