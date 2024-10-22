@@ -24,6 +24,8 @@ install-osx:
 	brew install tmux neovim
 	install-tmux
 	install-nvim
+	rm ~/Library/Application Support/lazygit/config.yml
+	ln -s lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
 
 install-linux:
 	sudo apt update
@@ -41,3 +43,6 @@ install-linux:
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
+	rm ~/.config/lazygit/config.yml
+	ln -s lazygit/config.yml ~/.config/lazygit/config.yml
+
