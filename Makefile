@@ -29,6 +29,8 @@ install-osx:
 
 install-linux:
 	sudo apt update
+	sudo chown jupyter:mollievertex ~/.bashrc
+	sudo chown jupyter:mollievertex ~/.bash_profile
 	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find xsel
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	. $(HOME)/.cargo/env && cargo install alacritty
@@ -38,11 +40,11 @@ install-linux:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
-	echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bashrc
-	echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bash_profile
+	sudo echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bashrc
+	sudo echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bash_profile
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
-	rm ~/.config/lazygit/config.yml
+	rm -f ~/.config/lazygit/config.yml
 	ln -s lazygit/config.yml ~/.config/lazygit/config.yml
 
