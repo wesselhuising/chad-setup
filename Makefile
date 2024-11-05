@@ -14,6 +14,10 @@ install-tmux:
 install-nvim:
 	rm -rf ~/.config/nvim
 	ln -sf $(CURDIR)/nvim ~/.config/nvim
+	pip install "python-lsp-server[all]"
+	pip install python-lsp-black
+	pip install pylsp-mypy
+	pip install python-lsp-isort
 
 install-lazygit-linux:
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_$(LAZYGIT_VERSION)_Linux_x86_64.tar.gz"
