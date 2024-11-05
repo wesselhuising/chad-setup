@@ -18,6 +18,8 @@ install-nvim:
 	pip install python-lsp-black
 	pip install pylsp-mypy
 	pip install python-lsp-isort
+	pip install jupytext
+	pip install ruff
 
 install-lazygit-linux:
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_$(LAZYGIT_VERSION)_Linux_x86_64.tar.gz"
