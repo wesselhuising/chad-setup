@@ -32,8 +32,10 @@ install-osx:
 	install-nvim
 	rm ~/Library/Application Support/lazygit/config.yml
 	ln -s lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
+	rm -rf ~/.config/alacritty/
 	ln -s alacritty/ ~/.config/alacritty/
-
+	rm -f ~/.config/lazygit/config.yml
+	ln -s lazygit/config.yml ~/.config/lazygit/config.yml
 install-linux:
 	sudo apt update
 	sudo chown jupyter:mollievertex ~/.bashrc
