@@ -32,6 +32,7 @@ install-osx:
 	install-nvim
 	rm ~/Library/Application Support/lazygit/config.yml
 	ln -s lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
+	ln -s alacritty/ ~/.config/alacritty/
 
 install-linux:
 	sudo apt update

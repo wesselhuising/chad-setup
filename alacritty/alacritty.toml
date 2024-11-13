@@ -1,0 +1,16 @@
+
+[terminal.shell]
+program = "/opt/homebrew/bin/bash"
+
+[font]
+size = 20
+
+[font.normal]
+family = "UbuntuMono Nerd Font"
+
+[general]
+import = [
+  "~/.config/alacritty/themes/themes/dracula.toml"
+]
+
+[terminal]
