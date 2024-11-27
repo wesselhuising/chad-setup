@@ -35,7 +35,7 @@ install-osx:
 	make install-nvim
 	rm -rf ~/alacritty/
 	ln -sf $(CURDIR)/alacritty/alacritty.toml ~/alacritty.toml
-	echo 'export XDG_CONFIG_HOME="~/.config"'
+	echo 'export XDG_CONFIG_HOME="~/.config"' >> ~/.bashrc
 	rm -rf ~/.config/lazygit
 	ln -sf $(CURDIR)/lazygit ~/.config/lazygit
 
