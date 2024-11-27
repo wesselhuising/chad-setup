@@ -8,18 +8,18 @@ pull:
 
 install-tmux:
 	ln -sf $(CURDIR)/tmux/.tmux.conf ~/.tmux.conf
-	sudo rm -rf ~/.tmux/plugins/tpm
+	rm -rf ~/.tmux/plugins/tpm
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 install-nvim:
 	rm -rf ~/.config/nvim
 	ln -sf $(CURDIR)/nvim ~/.config/nvim
-	pip install "python-lsp-server[all]"
-	pip install python-lsp-black
-	pip install pylsp-mypy
-	pip install python-lsp-isort
-	pip install jupytext
-	pip install ruff
+	pip install "python-lsp-server[all]" --user
+	pip install python-lsp-black --user
+	pip install pylsp-mypy --user
+	pip install python-lsp-isort --user
+	pip install jupytext --user
+	pip install ruff --user
 
 install-lazygit-linux:
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_$(LAZYGIT_VERSION)_Linux_x86_64.tar.gz"
@@ -27,16 +27,17 @@ install-lazygit-linux:
 	sudo install lazygit /usr/local/bin
 
 install-osx:
-	brew install tmux neovim
-	install-tmux
-	install-nvim
-	rm ~/Library/Application Support/lazygit/config.yml
-	ln -s lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
-	rm -rf ~/.config/alacritty/
-	ln -s alacritty/ ~/.config/alacritty/
-	rm -f ~/.config/lazygit/config.yml
-	mkdir ~/.config/lazygit/
-	ln -s lazygit/config.yml $HOME/Library/Application\ Support/lazygit/config.yml
+	chsh -s /bin/bash
+	brew update
+	brew install tmux neovim lazygit pyenv python@3.11
+	echo 'export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$(PATH)"' >> ~/.bashrc
+	make install-tmux
+	make install-nvim
+	rm -rf ~/alacritty/
+	ln -sf $(CURDIR)/alacritty/alacritty.toml ~/alacritty.toml
+	echo 'export XDG_CONFIG_HOME="~/.config"'
+	rm -rf ~/.config/lazygit
+	ln -sf $(CURDIR)/lazygit ~/.config/lazygit
 
 install-linux:
 	sudo apt update
