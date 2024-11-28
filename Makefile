@@ -29,12 +29,12 @@ install-lazygit-linux:
 install-osx:
 	chsh -s /bin/bash
 	brew update
-	brew install tmux neovim lazygit pyenv python@3.11
+	brew install tmux neovim lazygit pyenv python@3.11 font-fira-code-nerd-font
 	echo 'export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$(PATH)"' >> ~/.bashrc
 	make install-tmux
 	make install-nvim
 	rm -rf ~/alacritty/
-	ln -sf $(CURDIR)/alacritty/alacritty.toml ~/alacritty.toml
+	ln -sf $(CURDIR)/alacritty ~/.config/alacritty
 	echo 'export XDG_CONFIG_HOME="~/.config"' >> ~/.bashrc
 	rm -rf ~/.config/lazygit
 	ln -sf $(CURDIR)/lazygit ~/.config/lazygit
