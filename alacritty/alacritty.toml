@@ -1,3 +1,6 @@
+[env]
+TERM = "xterm-256color"
+
 [font]
 size = 17
 
@@ -9,4 +12,8 @@ import = [
   "~/.config/alacritty/themes/themes/dracula.toml"
 ]
 
-[terminal]
+[window]
+decorations = "Buttonless"
+
+opacity = 0.7
+blur = true
