@@ -20,6 +20,7 @@ install-nvim:
 	pip install python-lsp-isort --user
 	pip install jupytext --user
 	pip install ruff --user
+	pip install jupytext --user
 
 install-lazygit-linux:
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_$(LAZYGIT_VERSION)_Linux_x86_64.tar.gz"
@@ -31,7 +32,7 @@ install-osx:
 	ln -s $(CURDIR)/bash/.chad.sh ~/.chad.sh
 	echo "source $(CURDIR)/bash/.chad.sh" >> ~/.bashrc
 	brew update
-	brew install tmux neovim lazygit pyenv python@3.11 font-fira-code-nerd-font git-delta
+	brew install tmux neovim lazygit pyenv python@3.11 font-fira-code-nerd-font git-delta ripgrep fd wget go luarocks
 	echo 'export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$(PATH)"' >> ~/.bashrc
 	make install-tmux
 	make install-nvim
