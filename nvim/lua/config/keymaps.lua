@@ -33,3 +33,6 @@ vim.keymap.set("v", "<localleader>r", runner.run_range, { desc = "run visual ran
 vim.keymap.set("n", "<localleader>RA", function()
   runner.run_all(true)
 end, { desc = "run all cells of all languages", silent = true })
+
+-- LazyDocker
+vim.keymap.set("n", "<leader>k", "<cmd>LazyDocker<CR>", { desc = "Toggle LazyDocker", noremap = true, silent = true })
