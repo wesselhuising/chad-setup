@@ -59,7 +59,7 @@ install-linux:
 	sudo chown jupyter:mollievertex ~/.bashrc
 	sudo chown jupyter:mollievertex ~/.bash_profile
 	sudo apt install libfontconfig1-dev libfontconfig ripgrep fd-find xsel
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	make install-cargo
 	. $(HOME)/.cargo/env && cargo install alacritty
 	sudo apt install cmake pkg-config libfreetype6-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 	sudo apt install tmux
@@ -72,5 +72,6 @@ install-linux:
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
+	make install-fzf
 	rm -f ~/.config/lazygit/config.yml
 	ln -s lazygit/config.yml ~/.config/lazygit/config.yml
