@@ -42,7 +42,7 @@ install-cargo:
 install-osx:
 	chsh -s /bin/bash
 	brew update
-	brew install -f tmux neovim lazygit pyenv python@3.11 font-fira-code-nerd-font git-delta ripgrep fd wget go luarocks alt-tab rectangle npm
+	brew install -f tmux neovim lazygit pyenv python@3.11 font-fira-code-nerd-font git-delta ripgrep fd wget go luarocks alt-tab rectangle npm raycast
 	echo 'export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$(PATH)"' >> ~/.bashrc
 	make install-tmux
 	make install-nvi
