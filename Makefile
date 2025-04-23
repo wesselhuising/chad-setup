@@ -15,20 +15,22 @@ install-nvim:
 	rm -rf ~/.config/nvim
 	mkdir -p ~/.config
 	ln -sf $(CURDIR)/nvim ~/.config/nvim
-	pip install "python-lsp-server[all]" --user --break-system-packages
-	pip install python-lsp-black --user --break-system-packages
-	pip install pylsp-mypy --user --break-system-packages
-	pip install python-lsp-isort --user --break-system-packages
-	pip install jupytext --user --break-system-packages
-	pip install ruff --user --break-system-packages
-	pip install neovim --user --break-system-packages
+	pip install --index-url https://pypi.org/simple "python-lsp-server[all]" --user --break-system-packages
+	pip install --index-url https://pypi.org/simple python-lsp-black --user --break-system-packages
+	pip install --index-url https://pypi.org/simple pylsp-mypy --user --break-system-packages
+	pip install --index-url https://pypi.org/simple python-lsp-isort --user --break-system-packages
+	pip install --index-url https://pypi.org/simple jupytext --user --break-system-packages
+	pip install --index-url https://pypi.org/simple ruff --user --break-system-packages
+	pip install --index-url https://pypi.org/simple neovim --user --break-system-packages
 
 install-lazygit-linux:
+	rm -rf lazygit
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_$(LAZYGIT_VERSION)_Linux_x86_64.tar.gz"
 	tar xf lazygit.tar.gz lazygit
 	sudo install lazygit /usr/local/bin
 
 install-fzf:
+	rm -rf ~/.fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
 	# Set up fzf key bindings and fuzzy completion
@@ -64,14 +66,14 @@ install-linux:
 	sudo apt install cmake pkg-config libfreetype6-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 	sudo apt install tmux
 	make install-tmux
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+	curl -LO https://github.com/neovim/neovim-releases/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
 	sudo rm -rf /opt/nvim
-	sudo tar -C /opt -xzf nvim-linux64.tar.gz
-	sudo echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bashrc
-	sudo echo 'export PATH="$(PATH):/opt/nvim-linux64/bin"' >> ~/.bash_profile
+	sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+	sudo echo 'export PATH="${PATH}:/opt/nvim-linux-x86_64/bin"' >> ~/.bashrc
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 	make install-lazygit-linux
 	make install-nvim
 	make install-fzf
-	rm -f ~/.config/lazygit/config.yml
-	ln -s lazygit/config.yml ~/.config/lazygit/config.yml
+	rm -rf ~/.config/lazygit
+	mkdir ~/.config/lazygit
+	ln -sf $(CURDIR)/lazygit_config.yml ~/.config/lazygit/config.yml
