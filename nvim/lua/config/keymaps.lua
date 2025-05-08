@@ -23,7 +23,6 @@ vim.keymap.set("n", "<localleader>md", ":MoltenDelete<CR>", { desc = "delete Mol
 
 -- if you work with html outputs:
 vim.keymap.set("n", "<localleader>mx", ":MoltenOpenInBrowser<CR>", { desc = "open output in browser", silent = true })
-
 local runner = require("quarto.runner")
 vim.keymap.set("n", "<localleader>rc", runner.run_cell, { desc = "run cell", silent = true })
 vim.keymap.set("n", "<localleader>ra", runner.run_above, { desc = "run cell and above", silent = true })
@@ -35,4 +34,10 @@ vim.keymap.set("n", "<localleader>RA", function()
 end, { desc = "run all cells of all languages", silent = true })
 
 -- LazyDocker
-vim.keymap.set("n", "<leader>k", "<cmd>LazyDocker<CR>", { desc = "Toggle LazyDocker", noremap = true, silent = true })
+vim.keymap.set(
+  "n",
+  "<leader>k",
+  "<Cmd>lua LazyDocker.toggle()<CR>",
+  { desc = "Toggle LazyDocker", noremap = true, silent = true }
+)
+-- vim.keymap.set({ 'n', 't' }, '<leader>ld', '<Cmd>lua LazyDocker.toggle()<CR>')
