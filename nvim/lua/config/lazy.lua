@@ -64,7 +64,7 @@ require("mason").setup({
 
 -- https://github.com/williamboman/mason-lspconfig.nvim
 require("mason-lspconfig").setup({
-  ensure_installed = { "ruff", "pylsp" },
+  ensure_installed = { "ruff", "pylsp", "tflint" },
 })
 
 -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
