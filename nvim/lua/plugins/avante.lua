@@ -5,9 +5,10 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "gemini",
-    gemini = {
-      model = "gemini-2.5-flash-preview-05-20",
+    providers = {
+      gemini = {
+        model = "gemini-2.5-flash-preview-05-20",
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
