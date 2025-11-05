@@ -12,16 +12,16 @@
 -- end
 
 -- https://gaganpreet.in/posts/tmux-ssh-remote-clipboard/
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = paste,
-    ["*"] = paste,
-  },
-}
-
-vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+-- vim.g.clipboard = {
+--   name = "OSC 52",
+--   copy = {
+--     ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+--     ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+--   },
+--   paste = {
+--     ["+"] = paste,
+--     ["*"] = paste,
+--   },
+-- }
+--
+-- vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
