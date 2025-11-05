@@ -48,10 +48,6 @@ require("lazy").setup({
   },
 })
 
--- require("lint").linters_by_ft = {
---   python = { "pylint" },
--- }
-
 require("mason").setup({
   ui = {
     icons = {
@@ -138,74 +134,35 @@ require("jupytext").setup({
   force_ft = "markdown",
 })
 
-require("nvim-treesitter.configs").setup({
-  -- ... other ts config
-  textobjects = {
-    move = {
-      enable = true,
-      set_jumps = false, -- you can change this if you want.
-      goto_next_start = {
-        --- ... other keymaps
-        ["]b"] = { query = "@code_cell.inner", desc = "next code block" },
-      },
-      goto_previous_start = {
-        --- ... other keymaps
-        ["[b"] = { query = "@code_cell.inner", desc = "previous code block" },
-      },
-    },
-    select = {
-      enable = true,
-      lookahead = true, -- you can change this if you want
-      keymaps = {
-        --- ... other keymaps
-        ["ib"] = { query = "@code_cell.inner", desc = "in block" },
-        ["ab"] = { query = "@code_cell.outer", desc = "around block" },
-      },
-    },
-    swap = { -- Swap only works with code blocks that are under the same
-      -- markdown header
-      enable = true,
-      swap_next = {
-        --- ... other keymap
-        ["<leader>sbl"] = "@code_cell.outer",
-      },
-      swap_previous = {
-        --- ... other keymap
-        ["<leader>sbh"] = "@code_cell.outer",
-      },
-    },
-  },
-})
-
 -- smartyank
-require("smartyank").setup({
-  highlight = {
-    enabled = true, -- highlight yanked text
-    higroup = "IncSearch", -- highlight group of yanked text
-    timeout = 2000, -- timeout for clearing the highlight
-  },
-  clipboard = {
-    enabled = true,
-  },
-  tmux = {
-    enabled = true,
-    -- remove `-w` to disable copy to host client's clipboard
-    cmd = { "tmux", "set-buffer", "-w" },
-  },
-  osc52 = {
-    enabled = true,
-    -- escseq = 'tmux',     -- use tmux escape sequence, only enable if
-    -- you're using tmux and have issues (see #4)
-    ssh_only = true, -- false to OSC52 yank also in local sessions
-    silent = false, -- true to disable the "n chars copied" echo
-    echo_hl = "Directory", -- highlight group of the OSC52 echo message
-  },
-  -- By default copy is only triggered by "intentional yanks" where the
-  -- user initiated a `y` motion (e.g. `yy`, `yiw`, etc). Set to `false`
-  -- if you wish to copy indiscriminately:
-  -- validate_yank = false,
-  --
-  -- For advanced customization set to a lua function returning a boolean
-  -- for example, the default condition is:
-  -- validate_yank = function() return vim.v.operator == "y" end,
-})
+-- require("smartyank").setup({
+--   highlight = {
+--     enabled = true, -- highlight yanked text
+--     higroup = "IncSearch", -- highlight group of yanked text
+--     timeout = 2000, -- timeout for clearing the highlight
+--   },
+--   clipboard = {
+--     enabled = true,
+--   },
+--   tmux = {
+--     enabled = true,
+--     -- remove `-w` to disable copy to host client's clipboard
+--     cmd = { "tmux", "set-buffer", "-w" },
+--   },
+--   osc52 = {
+--     enabled = true,
+--     -- escseq = 'tmux',     -- use tmux escape sequence, only enable if
+--     -- you're using tmux and have issues (see #4)
+--     ssh_only = true, -- false to OSC52 yank also in local sessions
+--     silent = false, -- true to disable the "n chars copied" echo
+--     echo_hl = "Directory", -- highlight group of the OSC52 echo message
+--   },
+--   -- By default copy is only triggered by "intentional yanks" where the
+--   -- user initiated a `y` motion (e.g. `yy`, `yiw`, etc). Set to `false`
+--   -- if you wish to copy indiscriminately:
+--   -- validate_yank = false,
+--   --
+--   -- For advanced customization set to a lua function returning a boolean
+--   -- for example, the default condition is:
+--   -- validate_yank = function() return vim.v.operator == "y" end,
+-- })
