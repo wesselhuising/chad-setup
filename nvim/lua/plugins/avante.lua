@@ -7,6 +7,9 @@ return {
     -- for example
     provider = "openai",
     providers = {
+      openai = {
+        model = "gpt-5-mini",
+      },
       gemini = {
         model = "gemini-2.5-flash-preview-05-20",
       },
