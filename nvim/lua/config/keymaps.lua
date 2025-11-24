@@ -41,3 +41,4 @@ vim.keymap.set(
   { desc = "Toggle LazyDocker", noremap = true, silent = true }
 )
 -- vim.keymap.set({ 'n', 't' }, '<leader>ld', '<Cmd>lua LazyDocker.toggle()<CR>')
+vim.keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code" })
