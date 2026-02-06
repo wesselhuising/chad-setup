@@ -1,2 +1,15 @@
-lazy-lock.json
-lazyvim.json
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+
+# Archives
+*.tar.gz
+*.deb
+
+# Build artifacts
+lazygit

@@ -47,7 +47,7 @@ install-osx:
 	brew install -f tmux neovim lazygit pyenv python@3.11 font-fira-code-nerd-font ripgrep fd wget go luarocks alt-tab rectangle npm raycast
 	echo 'export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$(PATH)"' >> ~/.bashrc
 	make install-tmux
-	make install-nvi
+	make install-nvim
 	rm -rf ~/alacritty/
 	ln -sf $(CURDIR)/alacritty ~/.config/alacritty
 	echo 'export XDG_CONFIG_HOME="~/.config"' >> ~/.bashrc
